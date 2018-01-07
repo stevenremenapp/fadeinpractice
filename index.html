@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fadein Practice</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <style media="screen">
+      .container {
+        margin: 0 auto;
+      }
+      .container div {
+        padding: 100px;
+        margin: 50px;
+        background-color: cyan;
+      }
+      .hidden {
+        opacity: 0;
+        /*transform: translate3d(0, -50%, 0);*/
+      }
+
+      /*Trigger for animation*/
+      .animate {
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+      }
+
+      /*Fade in down animation*/
+      .fadeInDown {
+        -webkit-animation-name: fadeInDown;
+                animation-name: fadeInDown;
+      }
+
+      @-webkit-keyframes fadeInDown {
+        from {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -15%, 0);
+                  transform: translate3d(0, -15%, 0);
+        }
+        to {
+          opacity: 1;
+          -webkit-transform: none;
+                  transform: none;
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -15%, 0);
+                  transform: translate3d(0, -15%, 0);
+        }
+        to {
+          opacity: 1;
+          -webkit-transform: none;
+                  transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div>'ello 'ello</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+      <div class="hidden">Fade it in!</div>
+    </div>
+
+    <script type="text/javascript">
+      $(window).scroll(function() {
+        $('.hidden').each(function(i) {
+          var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+          var bottom_of_window = $(window).scrollTop() + $(window).height();
+          if(bottom_of_window > bottom_of_object) {
+            $(this).addClass("animate");
+            $(this).addClass("fadeInDown");
+          }
+        })
+      })
+    </script>
+
+  </body>
+</html>
